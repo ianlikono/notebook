@@ -1,6 +1,7 @@
-%h1= @note.title
-%p= @note.content
-
-= link_to "All Notes", notes_path
-= link_to "Edit", edit_note_path(@note)
-= link_to "Delete", note_path(@note), method: :delete, data:{confirm: "Are you Sure?"}
+.wrapper_with_padding
+  #note_show
+    %h1.title = @note.title
+    %p= simple_format(@note.content)
+    .button
+      = link_to "Edit", edit_note_path(@note),class: "button"
+      = link_to "Delete", note_path(@note), method: :delete, data:{confirm: "Are you Sure?"},class: "button"
