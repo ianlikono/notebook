@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
 	before_action :find_note, only: [:show, :edit, :update, :destroy]
 	def index
-		@note=Note.all.order("created_at DESC")
+		@note= Note.where(user_id: current_user)
 		
 	end
 	def show
