@@ -1,0 +1,25 @@
+!!!
+%html
+%head
+  %title NoteNote | Your online Notebook
+  = csrf_meta_tags
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+  %link{rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Rubik:300,400,700", type: "text/css"}
+  %link{rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css", type: "text/css"}
+  = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+%body
+
+  %header
+    .header_inner
+      =link_to image_tag('logo.svg'), root_path, id:"logo"
+      %nav
+        -if user_signed_in?
+          = link_to "New Note", new_note_path
+          = link_to "Sign Out", destroy_user_session_path, method: :delete
+        -else
+          = link_to "Log In", new_user_session_path
+  %p.notice= notice
+  %p.alert= alert
+
+  =yield
